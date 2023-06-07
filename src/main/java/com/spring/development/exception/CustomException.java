@@ -1,6 +1,6 @@
 package com.spring.development.exception;
 
-import com.jirayutcc.webflux.webservice.constant.ErrorMapping;
+import com.spring.development.constant.ErrorMapping;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
