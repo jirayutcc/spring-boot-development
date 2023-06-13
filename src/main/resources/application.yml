@@ -3,3 +3,8 @@ server:
 
 application:
   version: v1.0.0
+
+rest-client:
+    rest-template:
+        time-out: 10000
+        sslIgnore: true
