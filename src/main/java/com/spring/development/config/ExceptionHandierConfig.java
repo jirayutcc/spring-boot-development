@@ -15,42 +15,42 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionHandierConfig {
 
-    @ExceptionHandler(value = {Exception.class})
-    @ResponseStatus(HttpStatus.OK)
-    public ErrorResponse exception(Exception ex) {
-        log.error("Exception : ", ex);
-        ErrorResponse resp = new ErrorResponse();
-        resp.getHeaderResp().setStatusCd(ErrorMapping.CODE9999.getCode());
-        resp.getHeaderResp().setStatusDesc(ErrorMapping.CODE9999.getMessage());
+	@ExceptionHandler(value = {Exception.class})
+	@ResponseStatus(HttpStatus.OK)
+	public ErrorResponse exception(Exception ex) {
+		log.error("Exception : ", ex);
+		ErrorResponse resp = new ErrorResponse();
+		resp.getHeaderResp().setStatusCd(ErrorMapping.CODE9999.getCode());
+		resp.getHeaderResp().setStatusDesc(ErrorMapping.CODE9999.getMessage());
 
-        return resp;
-    }
+		return resp;
+	}
 
-    @ExceptionHandler(value = {ClientException.class})
-    @ResponseStatus(HttpStatus.OK)
-    public ErrorResponse clientException(ClientException ex) {
-        log.error("ClientException : ", ex);
-        ErrorResponse resp = new ErrorResponse();
-        resp.getHeaderResp().setStatusCd(ex.getStatusCd());
-        resp.getHeaderResp().setStatusDesc(ex.getStatusDesc());
+	@ExceptionHandler(value = {ClientException.class})
+	@ResponseStatus(HttpStatus.OK)
+	public ErrorResponse clientException(ClientException ex) {
+		log.error("ClientException : ", ex);
+		ErrorResponse resp = new ErrorResponse();
+		resp.getHeaderResp().setStatusCd(ex.getStatusCd());
+		resp.getHeaderResp().setStatusDesc(ex.getStatusDesc());
 
-        return resp;
-    }
+		return resp;
+	}
 
-    @ExceptionHandler(value = {CustomException.class})
-    @ResponseStatus(HttpStatus.OK)
-    public ErrorResponse customException(CustomException ex) {
-        log.error("CustomException : ", ex);
-        ErrorResponse resp = new ErrorResponse();
-        resp.getHeaderResp().setStatusCd(ex.getCode());
-        resp.getHeaderResp().setStatusDesc(ex.getMessage());
-        resp.getHeaderResp().setErrorDisplay(
-                HeaderResponse.ErrorDisplay.builder()
-                        .message(ex.getMessage())
-                        .title(ex.getDisplayTitle())
-                        .build()
-        );
+	@ExceptionHandler(value = {CustomException.class})
+	@ResponseStatus(HttpStatus.OK)
+	public ErrorResponse customException(CustomException ex) {
+		log.error("CustomException : ", ex);
+		ErrorResponse resp = new ErrorResponse();
+		resp.getHeaderResp().setStatusCd(ex.getCode());
+		resp.getHeaderResp().setStatusDesc(ex.getMessage());
+		resp.getHeaderResp().setErrorDisplay(
+			HeaderResponse.ErrorDisplay.builder()
+				.message(ex.getMessage())
+				.title(ex.getDisplayTitle())
+				.build()
+		);
 
-        return resp;
-    }
+		return resp;
+	}
 }
