@@ -4,6 +4,10 @@ server:
 application:
   version: v1.0.0
 
+certs:
+    public: ""
+    private: ""
+
 rest-client:
     rest-template:
         time-out: 10000
