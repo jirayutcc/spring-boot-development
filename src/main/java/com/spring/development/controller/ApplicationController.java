@@ -17,7 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ApplicationController {
 
+	public static final String MESSAGE_SERVER_IS_STARTED = "Hello, Server is started!";
+
 	private final ApplicationService versionService;
+
+	@GetMapping("/status")
+	public ResponseEntity<?> status() {
+		return new ResponseEntity<>(MESSAGE_SERVER_IS_STARTED, HttpStatus.OK);
+	}
 
 	@GetMapping("/version")
 	public ResponseEntity<?> version(
