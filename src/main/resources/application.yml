@@ -2,11 +2,33 @@ server:
   port: 9000
 
 application:
-  version: v1.0.0
+    version: v1.0.0
+
+data-source:
+    mariadb:
+        driver-class-name: org.mariadb.jdbc.Driver
+        url: jdbc:mariadb://localhost:3306/mariadb
+        username: mariadb
+        password: P@ssw0rd
+    postgresql:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: P@ssw0rd
 
 certs:
     public: ""
     private: ""
+
+spring:
+    cache:
+        type: redis
+        redis:
+            time-to-live: 300s
+            key-prefix: myapp-cache
+            use-key-prefix: true
+            cache-null-values: true
+            enable-transaction-support: true
 
 rest-client:
     rest-template:
