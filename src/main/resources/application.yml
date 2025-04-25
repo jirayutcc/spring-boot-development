@@ -17,8 +17,8 @@ data-source:
         password: P@ssw0rd
 
 certs:
-    public: ""
-    private: ""
+    public: classpath:certs/public_key.der
+    private: classpath:certs/private_key.der
 
 spring:
     cache:
@@ -32,5 +32,5 @@ spring:
 
 rest-client:
     rest-template:
-        time-out: 10000
+        time-out: 30000
         sslIgnore: true
